@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414012930) do
+ActiveRecord::Schema.define(version: 20160414014911) do
+
+  create_table "user_auths", force: :cascade do |t|
+    t.string   "provider",   null: false
+    t.string   "uid",        null: false
+    t.string   "name"
+    t.string   "location"
+    t.string   "image_url"
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_auths", ["provider", "uid"], name: "index_user_auths_on_provider_and_uid", unique: true
+  add_index "user_auths", ["provider"], name: "index_user_auths_on_provider"
+  add_index "user_auths", ["uid"], name: "index_user_auths_on_uid"
+  add_index "user_auths", ["user_id"], name: "index_user_auths_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "uid",                                     null: false

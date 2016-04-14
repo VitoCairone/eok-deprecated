@@ -1,3 +1,7 @@
 rails g controller pages
 
 rails g controller sessions
+
+rails g model User uid:string name:string location:string image_url:string points:integer free_points:integer last_allowance:timestamp lifetime_spent:integer session_token:string{64}
+
+rails g model UserAuth provider:string uid:string name:string location:string image_url:string url:string user:references

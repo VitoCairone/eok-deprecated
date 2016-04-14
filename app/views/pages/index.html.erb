@@ -1,4 +1,19 @@
-<div class="jumbotron">
-  <h1>Welcome!</h1>
-  <p>Login with facebook to get started!</p>
-</div>
+<% if current_user_auth %>
+  <div class="page-header">
+    <h1>Here is some info about you...</h1>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <ul>
+        <li><strong>Name:</strong> <%= current_user_auth.name %></li>
+        <li><strong>Provider:</strong> <%= current_user_auth.provider %></li>
+        <li><strong>uID:</strong> <%= current_user_auth.uid %></li>
+        <li><strong>Location:</strong> <%= current_user_auth.location %></li>
+        <li><strong>Avatar URL:</strong> <%= current_user_auth.image_url %></li>
+        <li><strong>URL:</strong> <%= current_user_auth.url %></li>
+      </ul>
+    </div>
+  </div>
+<% else %>
+  <%= render 'welcome' %>
+<% end %>
