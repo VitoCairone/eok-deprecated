@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	# note: a User will *usually* have just one UserAuth
 	# but formally speaking the relationship is has_many
 	has_many :questions
+	has_many :answers, through: :questions
 
 	before_create :set_last_allowance_to_now
 
