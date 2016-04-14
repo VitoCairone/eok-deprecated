@@ -7,7 +7,7 @@ class UserAuth < ActiveRecord::Base
 	    user_auth.name = auth_hash['info']['name']
 	    user_auth.location = auth_hash['info']['location']
 	    user_auth.image_url = auth_hash['info']['image']
-	    user_auth.url = auth_hash['info']['urls'][user.provider.capitalize]
+	    user_auth.url = auth_hash['info']['urls'][user_auth.provider.capitalize]
 	    user_auth.save!
 	    user_auth
 	  end
