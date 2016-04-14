@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414014911) do
+ActiveRecord::Schema.define(version: 20160414052215) do
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "uid",                         null: false
+    t.string   "text",                        null: false
+    t.integer  "user_id"
+    t.string   "author_name"
+    t.integer  "points",      default: 0
+    t.integer  "passes",      default: 0
+    t.boolean  "free_choice", default: false
+    t.boolean  "randomized",  default: false
+    t.boolean  "opinion",     default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "questions", ["points"], name: "index_questions_on_points"
+  add_index "questions", ["uid"], name: "index_questions_on_uid"
+  add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
   create_table "user_auths", force: :cascade do |t|
     t.string   "provider",   null: false

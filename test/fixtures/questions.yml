@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  text: MyString
+  user_id: 
+  author_name: MyString
+  points: 1
+  passes: 1
+  free_choice: false
+  randomized: false
+  opinion: false
+
+two:
+  uid: MyString
+  text: MyString
+  user_id: 
+  author_name: MyString
+  points: 1
+  passes: 1
+  free_choice: false
+  randomized: false
+  opinion: false

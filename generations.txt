@@ -5,3 +5,5 @@ rails g controller sessions
 rails g model User uid:string name:string location:string image_url:string points:integer free_points:integer last_allowance:timestamp lifetime_spent:integer session_token:string{64}
 
 rails g model UserAuth provider:string uid:string name:string location:string image_url:string url:string user:references
+
+rails g model Question uid:string text:string user:references author_name:string points:integer passes:integer free_choice:boolean randomized:boolean opinion:boolean
