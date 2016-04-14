@@ -1,0 +1,21 @@
+<form class="form">
+  <h4>Question</h4>
+
+  <div class="form-group">
+    <label for="questionText" class="control-label sr-only">Question</label>
+    <input type="text" class="form-control" id="questionText">
+  </div>
+
+  <h4>Answers</h4>
+
+  <% (1..7).each do |n| %>
+    <div class="form-group">
+      <label for="answerText<%= n %>" class="control-label sr-only">Answer<%= n %></label>
+      <input type="text" class="form-control" id="answerText<%= n %>">
+    </div>
+  <% end %>
+
+  <div id="helpBlock" class="help-block">Fill in up to 7 answers. Answers left blank are ignored</div>
+
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>

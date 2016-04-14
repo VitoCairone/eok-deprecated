@@ -11,3 +11,5 @@ rails g model Question uid:string text:string user:references author_name:string
 rails g model Answer text:string question:references number:integer score:integer
 
 rails g model Choice answer:references user:references ordinality:integer question:references pass:boolean
+
+rails g controller questions
