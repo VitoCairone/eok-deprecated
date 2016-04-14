@@ -9,3 +9,5 @@ rails g model UserAuth provider:string uid:string name:string location:string im
 rails g model Question uid:string text:string user:references author_name:string points:integer passes:integer free_choice:boolean randomized:boolean opinion:boolean
 
 rails g model Answer text:string question:references number:integer score:integer
+
+rails g model Choice answer:references user:references ordinality:integer question:references pass:boolean
