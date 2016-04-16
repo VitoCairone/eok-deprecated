@@ -21,12 +21,23 @@ class User < ActiveRecord::Base
 
 	class << self
 	  def from_user_auth(user_auth, login=true)
-	  	user = find_or_create_by(user_auth_id: user_auth.id)
+	  	user = nil
+	  	user_is_new = false
+	  	if user_auth.user_id
+				user = find(user_auth.user_id)
+	  	else
+	  		user = User.new(uid: SecureRandom.urlsafe_base64(64))
+	  		user_is_new = true
+	  	end
 	    user.name = user_auth.name
 	    user.location = user_auth.location
 	    user.image_url = user_auth.image_url
 	    user.session_token = SecureRandom.urlsafe_base64(64) if login
 	    user.save!
+	    if user_is_new
+	    	user_auth.user_id = user.id
+	    	user_auth.save!
+	    end
 	    user
 	  end
 	end
