@@ -6,12 +6,6 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-  <!-- Bootstrap latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
-  <!-- Bootstrap optional theme -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
   <!-- Facebook's oauth redirect adds the characters #_=_ to the return URL
        This JavaScript workaround is courtesy of niftylettuce, given here:
        http://stackoverflow.com/questions/7131909/facebook-callback-appends-to-return-url
@@ -43,13 +37,16 @@
     </div>
     <div id="navbar">
       <% if current_user_auth %>
+        <ul class="nav navbar-nav pull-left">
+          <li>Foo</li>
+        </ul>
         <ul class="nav navbar-nav pull-right">
           <li><%= image_tag current_user_auth.image_url, alt: current_user_auth.name %></li>
           <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
         </ul>
       <% else %>
         <ul class="nav navbar-nav">
-          <li><%= link_to 'Facebook Login', '/auth/facebook' %></li>
+          <li><%= link_to 'Login', '/auth/facebook' %></li>
         </ul>
       <% end %>
     </div>

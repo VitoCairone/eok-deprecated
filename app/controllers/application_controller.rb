@@ -5,7 +5,13 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # gives the current user_auth id, which is stored in the client's session,
+  # gives the current user object, based on the client's session_token
+  def current_user
+    @current_user ||= User.find_by(session_token: session[:session_token])
+  end
+
+  # gives the current user_auth object,
+  # using the id which is stored in the client's session
   # and corresponds to a particular UserAuth record id. This is rarely
   # useful and not highly secure -- it is provided for utility, but prefer
   # current_user for essentially all purposes
@@ -13,5 +19,6 @@ class ApplicationController < ActionController::Base
   	@current_user_auth ||= UserAuth.find_by(id: session[:user_auth_id])
   end
 
+  helper_method :current_user
   helper_method :current_user_auth
 end
