@@ -1,0 +1,5 @@
+<% @questions.each do |question| %>
+  <%= render 'show', question: question %>
+<% end %>
+
+<%= link_to 'Write a New Question', new_question_path %>

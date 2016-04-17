@@ -1,5 +1,7 @@
 <% if current_user_auth %>
   <%= render 'user_auth_returned' %>
+
+  <%= link_to 'Proceed to Questions', questions_path %>
 <% else %>
   <%= render 'welcome' %>
 <% end %>

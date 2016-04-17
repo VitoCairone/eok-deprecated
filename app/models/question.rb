@@ -5,6 +5,10 @@ class Question < ActiveRecord::Base
 
   accepts_nested_attributes_for :answers, allow_destroy: true
 
+  def author
+    author_name or user.name
+  end
+
   def self.next_unseen_set_for(user, limit=3)
   	return nil unless user and user.id.is_a? Integer
 

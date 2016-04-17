@@ -1,9 +1,16 @@
-<form class="form">
+<!-- There's no particular reason for writing this form in standard HTML
+     instead of Rails form_for / form_tag style, but it serves as a useful
+     example of the actual HTML requirements and behaviors that work
+     with Rails even without relying on helper magic. -->
+
+<form action="/questions" method="post" class="form">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
   <h4>Question</h4>
 
   <div class="form-group">
     <label for="questionText" class="control-label sr-only">Question</label>
-    <input type="text" class="form-control" id="questionText">
+    <input type="text" name="question[text]" class="form-control" id="questionText">
   </div>
 
   <h4>Answers</h4>
@@ -11,7 +18,7 @@
   <% (1..7).each do |n| %>
     <div class="form-group">
       <label for="answerText<%= n %>" class="control-label sr-only">Answer<%= n %></label>
-      <input type="text" class="form-control" id="answerText<%= n %>">
+      <input type="text" name="question[answers_attributes][<%= n-1 %>][text]" class="form-control" id="answerText<%= n %>">
     </div>
   <% end %>
 

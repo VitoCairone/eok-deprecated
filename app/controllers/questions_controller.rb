@@ -6,6 +6,9 @@ class QuestionsController < ApplicationController
 		@questions = Question.all # dev-ing, K.I.S.S.
 	end
 
+  def show
+  end
+
 	def new
 		# create blank question and answers to sit in the new view
 		# so that we can use the same form for 'new' and 'edit'
@@ -25,17 +28,25 @@ class QuestionsController < ApplicationController
     # We set it to the current_user's id by our own reckoning.
     q_params['user_id'] = current_user.id
 
+    # placeholder for the human-readable UID system to be implemented later
+    q_params['uid'] = SecureRandom.urlsafe_base64(10)
+
     answers_attributes = q_params['answers_attributes']
+
     # drop all blank answers
     answers_attributes.keep_if { |k, v| !v['text'].blank? }
-    # set each answer's user_id to the current_user's id also
-    answers_attributes.each do |k, v|
-      answers_attributes[k]['user_id'] = current_user.id
+
+    # assign serial numbers. We don't use the param number because users
+    # might skip slots in the form. This way, even if slots are skipped,
+    # an unbroken sequence of numbers starting with 1 is still assigned.
+    answers_attributes.each_with_index do |(k, v), idx|
+      v['number'] = idx + 1
     end
 
     # there is no question_id to assign to answers at this point
     # because the question hasn't yet been created.
     # accepts_nested_attributes_for will properly link them up for us.
+
     @question = Question.new(q_params)
 
     if @question.save
