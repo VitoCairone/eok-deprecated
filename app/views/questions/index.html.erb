@@ -1,5 +1,9 @@
 <% @questions.each do |question| %>
-  <%= render 'show', question: question %>
+  <div id='question-#{question.id}-wrapper'>
+    <%= render 'respond', question: question %>
+  </div>
 <% end %>
+
+<div id="response-elem">foo</div>
 
 <%= link_to 'Write a New Question', new_question_path %>

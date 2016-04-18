@@ -19,16 +19,17 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    # not implemented / untested
   end
 
   def create
     q_params = question_params
 
-    # the request isn't allowed to 'tell' us a user_id.
+    # the request isn't allowed to tell us a user_id.
     # We set it to the current_user's id by our own reckoning.
     q_params['user_id'] = current_user.id
 
-    # placeholder for the human-readable UID system to be implemented later
+    # placeholder for human-readable UID system to be implemented later
     q_params['uid'] = SecureRandom.urlsafe_base64(10)
 
     answers_attributes = q_params['answers_attributes']
@@ -59,23 +60,34 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      q_params = question_params
-      q_params['speaker_id'] = current_speaker.id
-      if @question.update(q_params)
-        flash[:success] = 'Question was successfully updated.'
-        redirect_to @question
-      else
-      	flash[:warning] = 'Sorry, an error prevented saving your question.'
-        render :edit
-      end
+    # untested
+    q_params = question_params
+    q_params['speaker_id'] = current_speaker.id
+    if @question.update(q_params)
+      flash[:success] = 'Question was successfully updated.'
+      redirect_to @question
+    else
+    	flash[:warning] = 'Sorry, an error prevented saving your question.'
+      render :edit
     end
   end
 
   def destroy
+    # untested
     @question.destroy
     flash[:success] = "Question has been deleted."
 		redirect_to root_path
+  end
+
+  def respond
+    puts "@@@@@@@@@@@@@@@@-A"
+    @answer = Answer.find_by(question_id: params[:question_id], number: params[:number])
+    puts @answer
+    puts @answer.text
+    puts "@@@@@@@@@@@@@@@@-B"
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

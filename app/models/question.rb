@@ -9,6 +9,16 @@ class Question < ActiveRecord::Base
     author_name or user.name
   end
 
+  def choice_of(some_user)
+    Choice.find_by(question_id: self.id, user_id: some_user.id, ordinality: 1)
+  end
+
+  def answer_of(some_user)
+    choice = choice_of(some_user)
+    return nil if choice.nil?
+    choice.answer
+  end
+
   def self.next_unseen_set_for(user, limit=3)
   	return nil unless user and user.id.is_a? Integer
 

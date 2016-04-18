@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+
+  <!-- this template will perform n2 queries if answers are not properly
+       pre-loaded with questions; make sure to prevent - not done yet!! -->
+
+  <div class="panel-body">
+    <ul>
+      <li><strong>Text:</strong> <%= question.text %></li>
+      <li><strong>Author:</strong> <%= question.author %></li>
+
+      <!-- This is ugly. Prefer a sub-panel look, or maybe a striped list
+           on the same level. -->
+      <li>
+        <p><strong>Answers</strong></p>
+        <ol>
+          <% question.answers.each do |answer| %>
+            <li id='<%= 'choose-#{answer.id}' %>'>
+              <%= link_to "[#{answer.number}]",
+                  respond_path(question_id: question.id,
+                               answer_id: answer.id,
+                               number: answer.number),
+                  remote: true %>
+              <%= answer.text %>
+            </li>
+          <% end %>
+        </ol>
+      </li>
+
+      <% user_answer = question.answer_of(current_user) %>
+      <li>
+        <% if user_answer.nil? %>
+          <!-- i tag is deprecated for pedantic reasons;
+               replace with a class duplicating presentation function -->
+          <i>You haven't answered this question</i>
+        <% else %>
+          <strong>Your Answer:</strong> <%= user_answer.text %>
+        <% end %>
+      </li>
+
+    </ul>
+  </div>
+
+</div>
