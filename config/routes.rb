@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :questions
 
+  # although it works, 'get' is very likely the wrong verb here
+  # consider replacing with 'post' for REST compliance
   get '/respond' => 'questions#respond'
 
   # You can have the root of your site routed with "root"

@@ -1,7 +1,7 @@
 <!-- There's no particular reason for writing this form in standard HTML
      instead of Rails form_for / form_tag style, but it serves as a useful
      example of the actual HTML requirements and behaviors that work
-     with Rails even without relying on helper magic. -->
+     with Rails without relying on helper magic. -->
 
 <form action="/questions" method="post" class="form">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -15,14 +15,16 @@
 
   <h4>Answers</h4>
 
+  <div id="helpBlock" class="help-block">
+    Fill in up to 7 answers. Answers left blank are ignored
+  </div>
+
   <% (1..7).each do |n| %>
     <div class="form-group">
       <label for="answerText<%= n %>" class="control-label sr-only">Answer<%= n %></label>
       <input type="text" name="question[answers_attributes][<%= n-1 %>][text]" class="form-control" id="answerText<%= n %>">
     </div>
   <% end %>
-
-  <div id="helpBlock" class="help-block">Fill in up to 7 answers. Answers left blank are ignored</div>
 
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
