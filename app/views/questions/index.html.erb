@@ -1,5 +1,5 @@
 <% @questions.each do |question| %>
-  <div id='question-#{question.id}-wrapper'>
+  <div id="question-<%= question.id %>-wrapper">
     <%= render 'respond', question: question %>
   </div>
 <% end %>

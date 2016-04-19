@@ -37,13 +37,18 @@
     </div>
     <div id="navbar">
       <% if current_user_auth %>
+
+        <!-- Foo appears as illegible black-on-black text;
+             just as well because positioning of this element is awful -->
         <ul class="nav navbar-nav pull-left">
           <li>Foo</li>
         </ul>
+
         <ul class="nav navbar-nav pull-right">
           <li><%= image_tag current_user_auth.image_url, alt: current_user_auth.name %></li>
           <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
         </ul>
+
       <% else %>
         <ul class="nav navbar-nav">
           <li><%= link_to 'Login', '/auth/facebook' %></li>

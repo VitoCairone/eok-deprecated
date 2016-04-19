@@ -12,9 +12,9 @@
            on the same level. -->
       <li>
         <p><strong>Answers</strong></p>
-        <ol>
+        <ul>
           <% question.answers.each do |answer| %>
-            <li id='<%= 'choose-#{answer.id}' %>'>
+            <li id='<%= "choose-#{answer.id}" %>'>
               <%= link_to "[#{answer.number}]",
                   respond_path(question_id: question.id,
                                answer_id: answer.id,
@@ -23,7 +23,7 @@
               <%= answer.text %>
             </li>
           <% end %>
-        </ol>
+        </ul>
       </li>
 
       <% user_answer = question.answer_of(current_user) %>

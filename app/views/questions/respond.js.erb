@@ -1,2 +1,6 @@
-console.log("Selected: '<%= @answer.text %>'; no persistance implemented yet.")
-// $("#response-elem").html("<%= sanitize @answer.text %>");
+//console.log("Selected: '<%= @answer.text %>'; no persistance implemented yet.")
+//console.log("Question id is <%= @question.id %>")
+$("#question-<%= @question.id %>-wrapper").html("<%= j(render 'respond', question: @question) %>");
+// $("#question-<%= @question.id %>-wrapper").html("FOOBAR");
+// $("#response-elem").html("<%= @answer.text %>")
+//console.log("done")

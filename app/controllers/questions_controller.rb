@@ -67,7 +67,7 @@ class QuestionsController < ApplicationController
       flash[:success] = 'Question was successfully updated.'
       redirect_to @question
     else
-    	flash[:warning] = 'Sorry, an error prevented saving your question.'
+    	flash[:warning] = 'Sorry, an error prevented saving your changes.'
       render :edit
     end
   end
@@ -80,11 +80,29 @@ class QuestionsController < ApplicationController
   end
 
   def respond
-    puts "@@@@@@@@@@@@@@@@-A"
-    @answer = Answer.find_by(question_id: params[:question_id], number: params[:number])
-    puts @answer
-    puts @answer.text
-    puts "@@@@@@@@@@@@@@@@-B"
+    # TODO: ensure_logged_in first
+
+    # set some shorthand vars
+    question_id = params[:question_id]
+    choice_num = params[:number]
+    user_id = current_user.id
+
+    # Find the answer that was chosen
+    @answer = Answer.find_by(question_id: question_id, number: choice_num)
+    answer_id = @answer.id
+
+    # Clear this user's existing choices for this question, if any.
+    # delete_all is faster, but destroy_all is safer in case we ever add callbacks.
+    # In most cases there will be no matching records so speed isn't a huge concern.
+    Choice.destroy_all(question_id: question_id, user_id: user_id)
+
+    # Create the new choice record for the chosen answer
+    @choice = Choice.new(question_id: question_id, user_id: user_id, answer_id: answer_id)
+    @choice_was_saved = @choice.save
+
+    # set @question so respond.js can re-render the right partial
+    @question = Question.find(question_id)
+
     respond_to do |format|
       format.js
     end
