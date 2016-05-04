@@ -1,0 +1,81 @@
+NOTES
+
+On starting server for user who did not log out but cannot talk to facebook (e.g. has no internet), current local behavior is: the user is rememembered and logged in, but their image graphic can't be fetched and displays a broken image box.
+
+Preferred look -----------------------------------------------------------------
+
+          QUESTIONS #first  -  #last
+          Reranked H:M0|5 pm
+
+--------------------------------------------------------------------------------
+          QUESTION #2 - 8000 pts
+--------------------------------------------------------------------------------
+
+          Large Bolded Question Text Slightly Overlapping Button Space
+          But Mainly On Answer Space, And Not Extending the Full Width of
+          Answer Space
+
+    Button      Answer Choice First
+
+    Button      Answer Choice Second Which Could Be Much Longer
+
+    Button      Answer Choice Third Which Could Be Longer Still And Go On To
+                Another Line Where It Should Indent With Its Text And Not Be Cut
+                Short or Overlap Button Horizontal Space
+
+    Button      Answer Choice Fourth, Noting The Answers Are Not Arranged By
+                Length, They Are Arranged Arbitrarily By Create-Time
+                Specification or In Some Cases Randomly With Each View
+
+    Button      Up to Seven Answer Choices May Be Present
+
+   Everyone     Greybox; on answer, greenbox or yellowbox to reveal the
+   Knows:       correct answer, and reveal You Know bar below with your answer
+                and change cost
+--------------------------------------------------------------------------------
+                                                    by: [Graphic] Someauthorname
+--------------------------------------------------------------------------------
+          QUESTION #5 - 6712 pts
+--------------------------------------------------------------------------------
+
+          This Is Just A Repeat Of The One Above And The Text May Not Be Kept
+          Consistant, Discard Remainder Of This Repeat
+
+    Button      Answer Choice First
+
+    Button      Answer Choice Second Which Could Be Much Longer
+
+    Button      Answer Choice Third Which Could Be Longer Still And Go On To
+                Another Line Where It Should Indent With Its Text And Not Be Cut
+                Short or Overlap Button Horizontal Space
+
+    Button      Answer Choice Fourth, Noting The Answers Are Not Arranged By
+                Length, They Are Arranged Arbitrarily By Create-Time
+                Specification or In Some Cases Randomly With Each View
+
+    Button      Up to Seven Answer Choices May Be Present
+
+   Everyone     Greybox; on answer, greenbox or yellowbox to reveal the
+     Knows:     correct answer, and reveal You Know bar below with your answer
+                and change cost
+
+--------------------------------------------------------------------------------
+                                                    by: [Graphic] Someauthorname
+--------------------------------------------------------------------------------
+
+Preferred look end -------------------------------------------------------------
+
+
+
+QUESTION CREATION OPTIONS
+
+Randomize Answers: Your answers will be shown in a random order every time.
+
+Anonymous: Author will display as Anonymous [Mysterioun].
+
+
+
+Ten per page, NO infinite scroll.
+
+There is no user-accessible pagination because that would effectively disable ordered presentation
+

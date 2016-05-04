@@ -1,6 +1,7 @@
-//console.log("Selected: '<%= @answer.text %>'; no persistance implemented yet.")
-//console.log("Question id is <%= @question.id %>")
+// Rendering changes with Rails Unobtrusive JS is pretty cool,
+// but this super simple method lacks any transition effect and feels a bit stiff.
+// Look to add some nice transition animations in the future.
+
+// console.log("Selected: '<%= @answer.text %>'")
 $("#question-<%= @question.id %>-wrapper").html("<%= j(render 'respond', question: @question) %>");
-// $("#question-<%= @question.id %>-wrapper").html("FOOBAR");
-// $("#response-elem").html("<%= @answer.text %>")
-//console.log("done")
+// console.log("Rerender done")

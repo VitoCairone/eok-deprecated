@@ -103,6 +103,10 @@ class QuestionsController < ApplicationController
     # set @question so respond.js can re-render the right partial
     @question = Question.find(question_id)
 
+    # Be aware that this is NOT a conventional asynchronous workflow.
+    # In normal async, server and client simultaneously effect the same
+    # change. Here, server effects the change, and THEN client renders the
+    # server's new state via JavaScript without a page reload.
     respond_to do |format|
       format.js
     end

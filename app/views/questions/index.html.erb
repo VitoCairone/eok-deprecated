@@ -4,6 +4,21 @@
   </div>
 <% end %>
 
-<!-- <div id="response-elem">foo</div> -->
+<div class="panel panel-default">
+  <div class="list-group" align="center">
+    <strong>
+      <%= link_to 'Get New Questions',
+          new_question_path,
+          remote: true,
+          class: "list-group-item list-group-item-info" %>
+      <%= link_to 'Write Your Own Question',
+          new_question_path,
+          class: "list-group-item list-group-item-info" %>
+    </strong>
+  </div>
+</div>
 
-<%= link_to 'Write a New Question', new_question_path %>
+<div class="panel panel-default">
+  <div class="list-group" align="center">
+  </div>
+</div>
