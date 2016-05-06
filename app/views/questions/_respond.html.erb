@@ -13,7 +13,7 @@
       <!-- replace this with a more rigidly quadrant-divided
            header -->
       <div align="right">
-        8765 pts
+        <%= question.points %> pts
       </div>
 
       <div align="right">
@@ -47,10 +47,17 @@
         <strong>You Know:</strong> <%= user_answer.text %>
       </li>
 
+      <!-- placeholder, mustfix -->
+      <% everyones_answer = user_answer %>
+
       <!-- assign this to success or warning based on match -->
       <li class="list-group-item list-group-item-success">
         <strong>Everyone Knows:</strong> Placeholder is the right answer
-        <span class="badge">87/99 agree</span>
+        <span class="badge">
+          <%= everyones_answer.response_count %>
+          /
+          <%= question.response_count %>
+        </span>
       </li>
 
     <% end %>

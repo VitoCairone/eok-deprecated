@@ -2,9 +2,13 @@ class QuestionsController < ApplicationController
 	before_action :set_question, only: [:show, :edit, :update, :destroy]
 
 	def index
-		# @questions = Question.next_unseen_set_for(current_user)
-		@questions = Question.all # dev-ing, K.I.S.S.
+    redirect_to welcome_url unless current_user
+		@questions = Question.next_unseen_set_for(current_user)
 	end
+
+  def seen
+    @questions = Question.seen_set_for(current_user)
+  end
 
   def show
   end

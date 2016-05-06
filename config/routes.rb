@@ -2,13 +2,19 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  root 'pages#index'
+  # controller should redirect root to pages#index when not logged in
+  # the 'normal' landing and home for all users is questions#index
+  root 'questions#index'
 
   get '/auth/:provider/callback' => 'sessions#create'
 
   delete '/logout' => 'sessions#destroy'
 
-  resources :questions
+  resources :questions do
+    get 'seen', on: :collection
+  end
+
+  get '/welcome' => 'pages#welcome'
 
   # although it works, 'get' is very likely the wrong verb here
   # consider replacing with 'post' for REST compliance

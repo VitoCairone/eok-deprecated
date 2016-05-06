@@ -19,7 +19,11 @@ class Question < ActiveRecord::Base
     choice.answer
   end
 
-  def self.next_unseen_set_for(user, limit=3)
+  def response_count
+    Choice.where(question_id: self.id, ordinality: 1).count
+  end
+
+  def self.next_unseen_set_for(user, limit=5)
   	return nil unless user and user.id.is_a? Integer
 
   	# to get questions this user hasn't seen yet,
@@ -41,11 +45,11 @@ class Question < ActiveRecord::Base
       .limit(limit)
   end
 
-  def self.seen_set_for(user, limit=3, offset=0)
+  def self.seen_set_for(user, limit=5, offset=0)
   	return nil unless user and user.id.is_a? Integer
     Question.joins(:choices)
     				.where(choices: { user_id: user.id, ordinality: 1 })
-    				.order(points: desc)
+    				.order(points: :desc)
 						.limit(limit)
 						.offset(offset)
   end
